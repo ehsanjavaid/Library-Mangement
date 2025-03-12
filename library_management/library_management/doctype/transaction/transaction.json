@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "TXN-.###",
+ "autoname": "format:TRX-{###}",
  "creation": "2025-03-12 09:07:50.386826",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -88,11 +88,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-03-12 09:15:14.381418",
+ "modified": "2025-03-12 11:17:33.614223",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Transaction",
- "naming_rule": "Expression (old style)",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

@@ -50,7 +50,7 @@
    "fieldname": "category",
    "fieldtype": "Select",
    "label": "Category",
-   "options": "Islamic Studies\nFiction\nNon-Fiction\nScience\nHistory"
+   "options": "Islamic Studies\nFiction\nNon-Fiction\nScience\nHistory\nBiography\nSociology & History\nIslamic Thought\nRomance"
   },
   {
    "fieldname": "section_break_ajcb",
@@ -105,7 +105,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Available\nBorrowed\nReserved\nLost"
+   "options": "Available\nBorrowed\nLost"
   },
   {
    "fieldname": "amended_from",
@@ -120,7 +120,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-12 09:33:57.476751",
+ "modified": "2025-03-12 11:54:25.668684",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Book",

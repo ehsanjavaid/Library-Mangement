@@ -25,7 +25,8 @@
   "fee",
   "payment_date",
   "column_break_iazj",
-  "payment_status"
+  "payment_status",
+  "amended_from"
  ],
  "fields": [
   {
@@ -121,11 +122,21 @@
    "fieldtype": "Select",
    "label": "Payment Status",
    "options": "Paid\nUnpaid"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Member",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-12 09:57:42.747609",
+ "modified": "2025-03-12 11:12:56.962617",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Member",

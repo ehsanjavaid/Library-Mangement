@@ -1,9 +1,30 @@
 # Copyright (c) 2025, ahsan and contributors
 # For license information, please see license.txt
 
-# import frappe
+import frappe
 from frappe.model.document import Document
+from frappe.utils import getdate
 
 
 class Transaction(Document):
-	pass
+	def before_submit(self):
+		book = frappe.get_doc("Book", self.book)
+
+		if book.status == "Borrowed" and book.available_copies == 0:
+			frappe.throw(f"The book {book.title} is not available for borrowing")
+		if getdate(self.return_date) > getdate(self.due_date):
+			frappe.throw("Return Date cannot be greater than Due Date")
+		if getdate(self.return_date) < getdate(self.issue_date):
+			frappe.throw("Issue Date cannot be greater than Return Date")
+
+		book.available_copies -= 1
+		book.save()
+	def on_cancel(self):
+		book = frappe.get_doc("Book", self.book)
+		book.available_copies += 1
+		book.save()
+		
+		
+		
+		
+		
