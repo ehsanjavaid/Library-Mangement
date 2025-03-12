@@ -1,0 +1,153 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "format:{full_name}-{###}",
+ "creation": "2025-03-12 08:57:42.860280",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "personal_information_section",
+  "first_name",
+  "last_name",
+  "email",
+  "column_break_dkdo",
+  "full_name",
+  "membership_id",
+  "phone",
+  "member_address_section",
+  "address",
+  "membership_section",
+  "membership_type",
+  "column_break_dhfw",
+  "membership_expiry",
+  "section_break_gujg",
+  "fee",
+  "payment_date",
+  "column_break_iazj",
+  "payment_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "personal_information_section",
+   "fieldtype": "Section Break",
+   "label": "Personal Information"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "column_break_dkdo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "membership_id",
+   "fieldtype": "Data",
+   "label": "Membership Id"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Phone",
+   "label": "Phone"
+  },
+  {
+   "fieldname": "member_address_section",
+   "fieldtype": "Section Break",
+   "label": "Member Address"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address"
+  },
+  {
+   "fieldname": "membership_section",
+   "fieldtype": "Section Break",
+   "label": "Membership"
+  },
+  {
+   "fieldname": "membership_type",
+   "fieldtype": "Select",
+   "label": "Membership Type",
+   "options": "Regular\nStudent\nPremium"
+  },
+  {
+   "fieldname": "column_break_dhfw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "membership_expiry",
+   "fieldtype": "Date",
+   "label": "Membership Expiry"
+  },
+  {
+   "fieldname": "section_break_gujg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_iazj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fee",
+   "fieldtype": "Data",
+   "label": "Fee (PKR)\t"
+  },
+  {
+   "fieldname": "payment_date",
+   "fieldtype": "Date",
+   "label": "Payment Date"
+  },
+  {
+   "fieldname": "payment_status",
+   "fieldtype": "Select",
+   "label": "Payment Status",
+   "options": "Paid\nUnpaid"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-03-12 09:57:42.747609",
+ "modified_by": "Administrator",
+ "module": "Library Management",
+ "name": "Member",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "full_name"
+}

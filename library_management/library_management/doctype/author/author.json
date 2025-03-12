@@ -1,0 +1,73 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{author_name}-{###}",
+ "creation": "2025-03-12 08:46:58.536880",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "author_name",
+  "nationality",
+  "column_break_ehtm",
+  "date_of_birth",
+  "section_break_fqew",
+  "biography"
+ ],
+ "fields": [
+  {
+   "fieldname": "author_name",
+   "fieldtype": "Data",
+   "label": "Author Name"
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Data",
+   "label": "Nationality"
+  },
+  {
+   "fieldname": "column_break_ehtm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "section_break_fqew",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "biography",
+   "fieldtype": "Text",
+   "label": "Biography"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-03-12 09:27:31.265104",
+ "modified_by": "Administrator",
+ "module": "Library Management",
+ "name": "Author",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "author_name"
+}

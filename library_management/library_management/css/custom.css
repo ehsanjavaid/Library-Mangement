@@ -1,0 +1,23 @@
+    /* Custom Styles for the Article Images */
+    .article-card-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .article-card-img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Additional Styles */
+    .navbar {
+        background-color: #333;
+    }
+
+
+    /* Example of custom styling for the container */
+    #app {
+        margin-top: 20px;
+    }
