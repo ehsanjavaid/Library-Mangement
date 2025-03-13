@@ -62,7 +62,8 @@
   {
    "fieldname": "membership_id",
    "fieldtype": "Data",
-   "label": "Membership Id"
+   "label": "Membership Id",
+   "read_only": 1
   },
   {
    "fieldname": "phone",
@@ -136,7 +137,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-12 11:12:56.962617",
+ "modified": "2025-03-13 09:53:13.949414",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Member",
