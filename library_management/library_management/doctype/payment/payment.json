@@ -1,36 +1,33 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:PAY-{member}-{###}",
+ "autoname": "format:{full_name}-{###}",
  "creation": "2025-03-12 09:21:14.617192",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "member",
+  "full_name",
   "payment_date",
   "status",
   "column_break_peaa",
-  "currency",
+  "amount",
   "payment_type",
+  "membership_id",
   "section_break_htsg",
   "remarks",
   "amended_from"
  ],
  "fields": [
   {
-   "fieldname": "member",
-   "fieldtype": "Link",
-   "label": "Member",
-   "options": "Member"
-  },
-  {
    "fieldname": "payment_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Payment Date"
   },
   {
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Status",
    "options": "Paid\nUnpaid"
   },
@@ -39,15 +36,11 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "currency",
-   "fieldtype": "Currency",
-   "label": "Currency"
-  },
-  {
    "fieldname": "payment_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Payment Type",
-   "options": "Membership Fee"
+   "options": "Membership Fee\nBook Purchase\nLate Return Fine\nSecurity Deposit\nRenewal Fee\nEvent Fee\nOther"
   },
   {
    "fieldname": "section_break_htsg",
@@ -67,12 +60,32 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "description": "PKR",
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Member",
+   "options": "Member"
+  },
+  {
+   "fieldname": "membership_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Membership Id"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-03-12 09:24:44.561289",
+ "modified": "2025-03-15 10:04:50.974652",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Payment",

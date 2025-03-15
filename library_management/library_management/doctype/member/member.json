@@ -2,7 +2,7 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "format:{full_name}-{###}",
+ "autoname": "format:{first_name} {last_name}-{###}",
  "creation": "2025-03-12 08:57:42.860280",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -22,7 +22,7 @@
   "column_break_dhfw",
   "membership_expiry",
   "section_break_gujg",
-  "fee",
+  "amount",
   "payment_date",
   "column_break_iazj",
   "payment_status",
@@ -37,12 +37,16 @@
   {
    "fieldname": "first_name",
    "fieldtype": "Data",
-   "label": "First Name"
+   "in_list_view": 1,
+   "label": "First Name",
+   "reqd": 1
   },
   {
    "fieldname": "last_name",
    "fieldtype": "Data",
-   "label": "Last Name"
+   "in_list_view": 1,
+   "label": "Last Name",
+   "reqd": 1
   },
   {
    "fieldname": "email",
@@ -54,14 +58,9 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "full_name",
-   "fieldtype": "Data",
-   "label": "Full Name",
-   "read_only": 1
-  },
-  {
    "fieldname": "membership_id",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Membership Id",
    "read_only": 1
   },
@@ -88,8 +87,10 @@
   {
    "fieldname": "membership_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Membership Type",
-   "options": "Regular\nStudent\nPremium"
+   "options": "Regular\nStudent\nPremium",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_dhfw",
@@ -98,7 +99,9 @@
   {
    "fieldname": "membership_expiry",
    "fieldtype": "Date",
-   "label": "Membership Expiry"
+   "in_list_view": 1,
+   "label": "Membership Expiry",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_gujg",
@@ -109,20 +112,18 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "fee",
-   "fieldtype": "Data",
-   "label": "Fee (PKR)\t"
-  },
-  {
    "fieldname": "payment_date",
    "fieldtype": "Date",
-   "label": "Payment Date"
+   "label": "Payment Date",
+   "reqd": 1
   },
   {
+   "default": "Unpaid",
    "fieldname": "payment_status",
    "fieldtype": "Select",
    "label": "Payment Status",
-   "options": "Paid\nUnpaid"
+   "options": "Unpaid\nPaid",
+   "sort_options": 1
   },
   {
    "fieldname": "amended_from",
@@ -133,11 +134,25 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "description": "PKR",
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-13 09:53:13.949414",
+ "modified": "2025-03-14 12:16:31.887040",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Member",
