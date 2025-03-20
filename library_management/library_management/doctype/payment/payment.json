@@ -1,12 +1,12 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{full_name}-{###}",
+ "autoname": "format:{member}-{###}",
  "creation": "2025-03-12 09:21:14.617192",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "full_name",
+  "member",
   "payment_date",
   "status",
   "column_break_peaa",
@@ -69,23 +69,24 @@
    "label": "Amount"
   },
   {
-   "fieldname": "full_name",
+   "fieldname": "membership_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Membership Id",
+   "read_only": 1
+  },
+  {
+   "fieldname": "member",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Member",
    "options": "Member"
-  },
-  {
-   "fieldname": "membership_id",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Membership Id"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-03-15 10:04:50.974652",
+ "modified": "2025-03-20 09:27:17.530086",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Payment",

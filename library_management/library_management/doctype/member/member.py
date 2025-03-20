@@ -40,12 +40,14 @@ class Member(Document):
         if fee_val <= 0:
             self.payment_status = "Unpaid"
             frappe.throw("Fee must be greater than 0")
+    
             
     def insert_payment(self):
+            # frappe.msgprint(f"Debug: id = {self.name}")
             membership = frappe.db.exists("Payment", {"membership_id": self.membership_id})
-
+            # frappe.msgprint(f"Debug: membership = {self.membership_id}")
             if membership:
-                payment_doc = frappe.get_doc("Payment", self.membership_id)
+                payment_doc = frappe.get_doc("Payment", membership)
                 payment_doc.amount = self.amount
                 payment_doc.payment_date = self.payment_date
                 payment_doc.payment_type = "Membership Fee"
@@ -54,7 +56,7 @@ class Member(Document):
             else:
                 payment_doc = frappe.get_doc({
                     "doctype": "Payment",
-                    "member": self.full_name,
+                    "member": self.name,
                     "amount": self.amount,
                     "membership_id": self.membership_id,
                     "membership_type": "Membership Fee",
