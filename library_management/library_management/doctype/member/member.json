@@ -11,6 +11,7 @@
   "first_name",
   "last_name",
   "email",
+  "image",
   "column_break_dkdo",
   "full_name",
   "membership_id",
@@ -148,11 +149,17 @@
    "in_list_view": 1,
    "label": "Amount",
    "reqd": 1
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image"
   }
  ],
+ "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-14 12:16:31.887040",
+ "modified": "2025-03-21 10:44:18.002994",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Member",
