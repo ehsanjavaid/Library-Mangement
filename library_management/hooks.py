@@ -242,3 +242,9 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+    # app_include_js = "/library_management/library_management/doctype/member.js"
+
+    # # Expose the API method
+    # override_whitelisted_methods = {
+    #     "library_management.api.whatsapp.send_whatsapp_message": "library_management.api.whatsapp.send_whatsapp_message"
+    # }
