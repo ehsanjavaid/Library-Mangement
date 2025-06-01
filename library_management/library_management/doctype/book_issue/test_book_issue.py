@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestWhatsappSavedTemplate(FrappeTestCase):
+class TestBookIssue(FrappeTestCase):
 	pass

@@ -1,7 +1,7 @@
 // Copyright (c) 2025, ahsan and contributors
 // For license information, please see license.txt
 
-// frappe.ui.form.on("Whatsapp Saved Template", {
+// frappe.ui.form.on("Book Issue", {
 // 	refresh(frm) {
 
 // 	},

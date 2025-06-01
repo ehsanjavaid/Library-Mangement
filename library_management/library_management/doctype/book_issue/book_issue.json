@@ -1,0 +1,115 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Issue-Book.####",
+ "creation": "2025-05-28 13:30:23.692529",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "customer_details_section",
+  "library_member",
+  "column_break_demu",
+  "phone_number",
+  "section_break_jdnu",
+  "book_issued_items",
+  "membership_section",
+  "membership_validity",
+  "membership_type",
+  "column_break_kusc",
+  "membership_id",
+  "membership_expiry"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer_details_section",
+   "fieldtype": "Section Break",
+   "label": "Customer Details"
+  },
+  {
+   "fieldname": "library_member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Library Member",
+   "options": "Member"
+  },
+  {
+   "fieldname": "column_break_demu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "library_member.phone",
+   "fieldname": "phone_number",
+   "fieldtype": "Phone",
+   "label": "Phone Number"
+  },
+  {
+   "fieldname": "membership_section",
+   "fieldtype": "Section Break",
+   "label": "Membership"
+  },
+  {
+   "fieldname": "membership_validity",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Membership Validity",
+   "options": "Active\nExpired\nSuspended"
+  },
+  {
+   "fetch_from": "library_member.membership_type",
+   "fieldname": "membership_type",
+   "fieldtype": "Data",
+   "label": "Membership Type"
+  },
+  {
+   "fieldname": "column_break_kusc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "library_member.membership_id",
+   "fieldname": "membership_id",
+   "fieldtype": "Data",
+   "label": "Membership Id"
+  },
+  {
+   "fetch_from": "library_member.membership_expiry",
+   "fieldname": "membership_expiry",
+   "fieldtype": "Data",
+   "label": "Membership Expiry"
+  },
+  {
+   "fieldname": "book_issued_items",
+   "fieldtype": "Table",
+   "label": "Book Issued Items",
+   "options": "Book Issued Items"
+  },
+  {
+   "fieldname": "section_break_jdnu",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-06-01 12:00:41.910151",
+ "modified_by": "Administrator",
+ "module": "Library Management",
+ "name": "Book Issue",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

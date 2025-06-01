@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class WhatsappSavedTemplate(Document):
+class BookIssuedItems(Document):
 	pass
