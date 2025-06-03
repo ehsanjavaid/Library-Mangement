@@ -89,7 +89,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-06-01 12:00:41.910151",
+ "modified": "2025-06-03 11:54:47.614098",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Book Issue",
@@ -107,6 +107,15 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Library Member",
+   "share": 1
   }
  ],
  "sort_field": "modified",
