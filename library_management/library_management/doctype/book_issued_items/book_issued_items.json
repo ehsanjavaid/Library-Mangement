@@ -11,7 +11,8 @@
   "due_date",
   "column_break_qaor",
   "author",
-  "issue_date"
+  "issue_date",
+  "status"
  ],
  "fields": [
   {
@@ -45,12 +46,18 @@
    "fieldname": "issue_date",
    "fieldtype": "Date",
    "label": "Issue Date"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Issued\nReturned"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-06-01 11:45:31.144690",
+ "modified": "2025-07-03 11:41:33.229674",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Book Issued Items",
