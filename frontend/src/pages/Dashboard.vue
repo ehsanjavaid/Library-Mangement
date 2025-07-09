@@ -6,28 +6,36 @@
     <div v-else class="grid gap-6 grid-cols-[repeat(auto-fit,minmax(250px,1fr))]">
       <div class="bg-[#FEF8E8] text-center p-6 rounded-xl shadow">
         <div class="flex justify-center mb-2">
-          <BookOpen class="w-10 h-10" />
+          <div class="bg-yellow-400 rounded-lg p-3">
+            <BookOpen class="w-6 h-6 text-white" />
+          </div>
         </div>
         <h2 class="text-lg font-semibold mb-2"> Total Books</h2>
         <p class="text-3xl font-bold">{{ resource.data.total_books }}</p>
       </div>
-      <div class="bg-[#EEEEFE] text-center p-6 rounded-xl shadow">
+      <div class="bg-[#EAF9EF] text-center p-6 rounded-xl shadow">
         <div class="flex justify-center mb-2">
-          <Users class="w-10 h-10" />
+          <div class="bg-[#37C76B] rounded-lg p-3">
+            <User class="w-6 h-6 text-white" />
+          </div>
         </div>
         <h2 class="text-lg font-semibold mb-2">Total Members</h2>
         <p class="text-3xl font-bold">{{ resource.data.members }}</p>
       </div>
-      <div class="bg-[#E7F9F9] text-center p-6 rounded-xl shadow">
+      <div class="bg-[#EEEEFE] text-center p-6 rounded-xl shadow">
         <div class="flex justify-center mb-2">
-          <BookOpen class="w-10 h-10" />
+          <div class="bg-[#635BFD] rounded-lg p-3">
+            <BookOpen class="w-6 h-6 text-white" />
+          </div>
         </div>
         <h2 class="text-lg font-semibold mb-2">Book Issued</h2>
         <p class="text-3xl font-bold">{{ resource.data.book_issue }}</p>
       </div>
-      <div class="bg-[#FFF1F6] text-center p-6 rounded-xl shadow">
+      <div class="bg-[#E7F9F9] text-center p-6 rounded-xl shadow">
         <div class="flex justify-center mb-2">
-          <BookOpen class="w-10 h-10" />
+          <div class="bg-[#17CDC9] rounded-lg p-3">
+            <BookOpen class="w-6 h-6 text-white" />
+          </div>
         </div>
         <h2 class="text-lg font-semibold mb-2">Available Books</h2>
         <p class="text-3xl font-bold">{{ resource.data.available_books }}</p>
@@ -60,7 +68,7 @@
 
 <script setup>
 import { createResource } from 'frappe-ui'
-import { BookOpen, Users } from 'lucide-vue-next'
+import { BookOpen, User, Users } from 'lucide-vue-next'
 import Header from '@/components/Layout/Header.vue'
 import { computed } from 'vue'
 import VChart from 'vue-echarts'
@@ -181,7 +189,7 @@ const booksAvailabilityOptions = computed(() => {
         labelLine: {
           show: true,
           length: 5,
-          length2:5,
+          length2: 5,
         },
         data // ✅ converted values
       }
