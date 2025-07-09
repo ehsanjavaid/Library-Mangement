@@ -12,6 +12,7 @@
   "last_name",
   "email",
   "image",
+  "cnic",
   "column_break_dkdo",
   "full_name",
   "membership_id",
@@ -154,12 +155,17 @@
    "fieldname": "image",
    "fieldtype": "Attach Image",
    "label": "Image"
+  },
+  {
+   "fieldname": "cnic",
+   "fieldtype": "Data",
+   "label": "CNIC"
   }
  ],
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-21 10:44:18.002994",
+ "modified": "2025-07-04 14:42:45.482070",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Member",

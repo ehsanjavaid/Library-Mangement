@@ -33,16 +33,95 @@
         <p class="text-3xl font-bold">{{ resource.data.available_books }}</p>
       </div>
     </div>
+    <!-- chart -->
+    <div class="bg-white p-6 rounded-xl shadow mt-8 w-[50%]">
+      <h2 class="text-lg font-bold mb-4">Books Allocation by Locations</h2>
+      <v-chart v-if="pieChartOptions && pieChartOptions.series" class="chart" :option="pieChartOptions" autoresize />
+    </div>
+
   </div>
 </template>
+<style scoped>
+.chart {
+  width: 100%;
+  height: 300px;
+  min-height: 300px;
+  display: block;
+}
+</style>
 
 <script setup>
 import { createResource } from 'frappe-ui'
 import { BookOpen, Users } from 'lucide-vue-next'
 import Header from '@/components/Layout/Header.vue'
+import { computed } from 'vue'
+import VChart from 'vue-echarts'
+import * as echarts from 'echarts/core'
+import { PieChart } from 'echarts/charts'
+import { TitleComponent, TooltipComponent, LegendComponent } from 'echarts/components'
+import { CanvasRenderer } from 'echarts/renderers'
+import { watchEffect } from 'vue'
+//  Dashboard Stats Resource
 const resource = createResource({
   url: '/api/method/library_management.api.dashboard.get_dashboard_data',
   auto: true,
   transform: (response) => response.message
+})
+
+echarts.use([
+  PieChart,
+  TitleComponent,
+  TooltipComponent,
+  LegendComponent,
+  CanvasRenderer
+])
+const locationChart = createResource({
+  url: '/api/method/library_management.api.dashboard.get_books_by_location',
+  auto: true,
+  transform: (response) => response.message
+})
+
+const pieChartOptions = computed(() => {
+  const data = (locationChart.data || []).map(item => ({
+    name: item.name,
+    value: item.count
+  }))
+
+  if (!data.length) return {}
+
+  return {
+    color: ['#5470C6', '#91CC75', '#FAC858', '#EE6666', '#73C0DE', '#3BA272'],
+    tooltip: {
+      trigger: 'item'
+    },
+    legend: {
+      top: '5%',
+      left: 'center'
+    },
+    series: [
+      {
+        name: 'Books by Location',
+        type: 'pie',
+        radius: ['40%', '70%'],
+        avoidLabelOverlap: false,
+        renderMode: 'canvas',
+        label: {
+          show: false,
+          position: 'center'
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: 16,
+            fontWeight: 'bold'
+          }
+        },
+        labelLine: {
+          show: false
+        },
+        data
+      }
+    ]
+  }
 })
 </script>
