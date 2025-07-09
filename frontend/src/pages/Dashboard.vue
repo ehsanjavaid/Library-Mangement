@@ -12,6 +12,9 @@
         </div>
         <h2 class="text-lg font-semibold mb-2"> Total Books</h2>
         <p class="text-3xl font-bold">{{ resource.data.total_books }}</p>
+        <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-[#FEF8E8]-100 transition bg-[white] text-sm">
+          View Details
+        </button>
       </div>
       <div class="bg-[#EAF9EF] text-center p-6 rounded-xl shadow">
         <div class="flex justify-center mb-2">
@@ -21,6 +24,9 @@
         </div>
         <h2 class="text-lg font-semibold mb-2">Total Members</h2>
         <p class="text-3xl font-bold">{{ resource.data.members }}</p>
+        <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-[#FEF8E8]-100 transition bg-[white] text-sm">
+          View Details
+        </button>
       </div>
       <div class="bg-[#EEEEFE] text-center p-6 rounded-xl shadow">
         <div class="flex justify-center mb-2">
@@ -30,6 +36,9 @@
         </div>
         <h2 class="text-lg font-semibold mb-2">Book Issued</h2>
         <p class="text-3xl font-bold">{{ resource.data.book_issue }}</p>
+        <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-[#FEF8E8]-100 transition bg-[white] text-sm">
+          View Details
+        </button>
       </div>
       <div class="bg-[#E7F9F9] text-center p-6 rounded-xl shadow">
         <div class="flex justify-center mb-2">
@@ -39,6 +48,9 @@
         </div>
         <h2 class="text-lg font-semibold mb-2">Available Books</h2>
         <p class="text-3xl font-bold">{{ resource.data.available_books }}</p>
+        <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-[#FEF8E8]-100 transition bg-[white] text-sm">
+          View Details
+        </button>
       </div>
     </div>
     <!-- chart -->
