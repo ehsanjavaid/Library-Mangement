@@ -28,3 +28,13 @@ def get_books_by_location():
     location_counts = Counter(locations)
     result = [{"name": loc, "count": count} for loc, count in location_counts.items()]
     return result
+
+# Books Availability
+@frappe.whitelist()
+def get_books_availability():
+    books = frappe.db.sql(""" 
+                          SELECT status AS name, COUNT(*) AS count
+                          FROM `tabBook`
+                          GROUP BY status
+                          """, as_dict=True)
+    return books

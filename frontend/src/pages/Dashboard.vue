@@ -4,28 +4,28 @@
     <h1 class="text-2xl font-bold mb-4">Welcome Admin</h1>
     <div v-if="resource.loading" class="text-gray-500">Loading...</div>
     <div v-else class="grid gap-6 grid-cols-[repeat(auto-fit,minmax(250px,1fr))]">
-      <div class="bg-yellow-100 text-center p-6 rounded-xl shadow">
+      <div class="bg-[#FEF8E8] text-center p-6 rounded-xl shadow">
         <div class="flex justify-center mb-2">
           <BookOpen class="w-10 h-10" />
         </div>
         <h2 class="text-lg font-semibold mb-2"> Total Books</h2>
         <p class="text-3xl font-bold">{{ resource.data.total_books }}</p>
       </div>
-      <div class="bg-yellow-100 text-center p-6 rounded-xl shadow">
+      <div class="bg-[#EEEEFE] text-center p-6 rounded-xl shadow">
         <div class="flex justify-center mb-2">
           <Users class="w-10 h-10" />
         </div>
         <h2 class="text-lg font-semibold mb-2">Total Members</h2>
         <p class="text-3xl font-bold">{{ resource.data.members }}</p>
       </div>
-      <div class="bg-yellow-100 text-center p-6 rounded-xl shadow">
+      <div class="bg-[#E7F9F9] text-center p-6 rounded-xl shadow">
         <div class="flex justify-center mb-2">
           <BookOpen class="w-10 h-10" />
         </div>
         <h2 class="text-lg font-semibold mb-2">Book Issued</h2>
         <p class="text-3xl font-bold">{{ resource.data.book_issue }}</p>
       </div>
-      <div class="bg-yellow-100 text-center p-6 rounded-xl shadow">
+      <div class="bg-[#FFF1F6] text-center p-6 rounded-xl shadow">
         <div class="flex justify-center mb-2">
           <BookOpen class="w-10 h-10" />
         </div>
@@ -34,11 +34,19 @@
       </div>
     </div>
     <!-- chart -->
-    <div class="bg-white p-6 rounded-xl shadow mt-8 w-[50%]">
-      <h2 class="text-lg font-bold mb-4">Books Allocation by Locations</h2>
-      <v-chart v-if="pieChartOptions && pieChartOptions.series" class="chart" :option="pieChartOptions" autoresize />
+    <div class="flex flex-row w-100%">
+      <div class="bg-white p-6 rounded-xl shadow mt-8 w-[50%] mr-4">
+        <h2 class="text-lg font-bold mb-4">Books Allocation by Locations</h2>
+        <v-chart v-if="pieChartOptions && pieChartOptions.series" class="chart" :option="pieChartOptions" autoresize />
+      </div>
+      <!-- Books Availability -->
+      <div class="bg-white p-6 rounded-xl shadow mt-8 w-[50%] mr-4">
+        <h2 class="text-lg font-bold mb-4">Books by Status</h2>
+        <v-chart class="chart" v-if="booksAvailabilityOptions && booksAvailabilityOptions.series"
+          :option="booksAvailabilityOptions" autoresize />
+        <pre v-else>Loading or no data...</pre>
+      </div>
     </div>
-
   </div>
 </template>
 <style scoped>
@@ -81,6 +89,7 @@ const locationChart = createResource({
   transform: (response) => response.message
 })
 
+
 const pieChartOptions = computed(() => {
   const data = (locationChart.data || []).map(item => ({
     name: item.name,
@@ -120,6 +129,61 @@ const pieChartOptions = computed(() => {
           show: false
         },
         data
+      }
+    ]
+  }
+})
+// Books Availability
+const booksAvailability = createResource({
+  url: '/api/method/library_management.api.dashboard.get_books_availability',
+  auto: true,
+  transform: (response) => response.message
+})
+
+const booksAvailabilityOptions = computed(() => {
+  const data = (booksAvailability.data || []).map(item => ({
+    name: item.name,
+    value: item.count
+  }))
+  if (!data.length) return {}
+
+  return {
+    color: ['#91CC75', '#5470C6', '#FAC858'],
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b}: {c} ({d}%)' // 👈 shows value + percent
+    },
+    legend: {
+      top: '5%',
+      left: 'center'
+    },
+    series: [
+      {
+        name: 'Book Status',
+        type: 'pie',
+        radius: ['40%', '70%'], // Donut shape
+        avoidLabelOverlap: false,
+        label: {
+          show: true,
+          formatter: '{b}: {d}%', // 👈 inside chart: name + percent
+          position: 'outside'
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: 15,
+            fontWeight: 'bold'
+          }
+        },
+        labelLayout: {
+          hideOverlap: true
+        },
+        labelLine: {
+          show: true,
+          length: 5,
+          length2:5,
+        },
+        data // ✅ converted values
       }
     ]
   }

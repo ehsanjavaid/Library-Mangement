@@ -104,6 +104,7 @@
   {
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Status",
    "options": "Available\nBorrowed\nLost"
   },
@@ -120,7 +121,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-12 11:54:25.668684",
+ "modified": "2025-07-09 11:47:39.489970",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Book",
