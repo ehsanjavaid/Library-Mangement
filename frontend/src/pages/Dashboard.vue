@@ -12,9 +12,9 @@
         </div>
         <h2 class="text-lg font-semibold mb-2"> Total Books</h2>
         <p class="text-3xl font-bold">{{ resource.data.total_books }}</p>
-        <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-[#FEF8E8]-100 transition bg-[white] text-sm">
+        <a href="ManageBooks"><button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-[#FEF8E8]-100 transition bg-[white] text-sm">
           View Details
-        </button>
+        </button></a>
       </div>
       <div class="bg-[#EAF9EF] text-center p-6 rounded-xl shadow">
         <div class="flex justify-center mb-2">
@@ -48,9 +48,9 @@
         </div>
         <h2 class="text-lg font-semibold mb-2">Available Books</h2>
         <p class="text-3xl font-bold">{{ resource.data.available_books }}</p>
-        <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-[#FEF8E8]-100 transition bg-[white] text-sm">
+        <a href="ManageBooks"><button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-[#FEF8E8]-100 transition bg-[white] text-sm">
           View Details
-        </button>
+        </button></a>
       </div>
     </div>
     <!-- chart -->
@@ -80,7 +80,7 @@
 
 <script setup>
 import { createResource } from 'frappe-ui'
-import { BookOpen, User, Users } from 'lucide-vue-next'
+import { BookOpen, User } from 'lucide-vue-next'
 import Header from '@/components/Layout/Header.vue'
 import { computed } from 'vue'
 import VChart from 'vue-echarts'
