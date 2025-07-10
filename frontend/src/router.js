@@ -6,6 +6,12 @@ const routes = [
     name: 'Dashboard',
     component: () => import('@/pages/Dashboard.vue'),
   },
+  {
+    path: '/managebooks',
+    component: () => import('@/pages/ManageBooks.vue'),
+    name: 'ManageBooks',
+  },
+
 ]
 
 let router = createRouter({
