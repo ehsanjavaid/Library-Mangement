@@ -151,7 +151,6 @@
 import { ref, computed } from 'vue'
 import { createResource } from 'frappe-ui'
 import { Search, Plus, ChevronDown } from 'lucide-vue-next'
-import { useRouter } from 'vue-router'
 
 
 const searchText = ref('')
@@ -180,11 +179,54 @@ const filteredBooks = computed(() => {
         )
     })
 })
+// Add new book modal
+import { call } from 'frappe-ui'
 
-const router = useRouter()
+// Show/hide the form modal
+const showAddModal = ref(false)
+
+// Form data
+const newBook = ref({
+    title: '',
+    author: '',
+    category: '',
+    location: '',
+    total_copies: 1,
+    status: 'Available',
+})
+
+// Handle add book button click
 const handleAddBook = () => {
-    router.push('/addbook')
+    showAddModal.value = true
 }
+
+// Submit form and create new book
+const submitBook = async () => {
+    try {
+        await call('frappe.client.insert', {
+            doc: {
+                doctype: 'Book',
+                ...newBook.value,
+            },
+        })
+        alert('✅ Book added successfully!')
+        showAddModal.value = false
+        resource.fetch()  // refresh book list
+        // reset form
+        newBook.value = {
+            title: '',
+            author: '',
+            category: '',
+            location: '',
+            total_copies: 1,
+            status: 'Available',
+        }
+    } catch (err) {
+        console.error(err)
+        alert('❌ Failed to add book')
+    }
+}
+
 
 
 const dropdownOpen = ref(false)
