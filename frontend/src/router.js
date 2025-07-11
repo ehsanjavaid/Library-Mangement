@@ -11,6 +11,11 @@ const routes = [
     component: () => import('@/pages/ManageBooks.vue'),
     name: 'ManageBooks',
   },
+  {
+    path: '/addbook',
+    component: () => import('@/pages/AddBooks.vue'),
+    name: 'AddBook',
+  },
 
 ]
 

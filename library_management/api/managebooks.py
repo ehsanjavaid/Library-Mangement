@@ -43,3 +43,20 @@ def get_books_list(page=1, page_length=20, filters=None, search_text=None):
         "page": int(page),
         "page_size": int(page_length),
     }
+
+
+@frappe.whitelist()
+def add_book(title, author, category, status, location=None, total_copies=1):
+    doc = frappe.get_doc(
+        {
+            "doctype": "Book",
+            "title": title,
+            "author": author,
+            "category": category,
+            "status": status,
+            "location": location,
+            "total_copies": total_copies,
+        }
+    )
+    doc.insert()
+    return {"message": "Book added", "name": doc.name}
