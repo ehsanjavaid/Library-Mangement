@@ -2,6 +2,7 @@ import frappe
 from frappe.utils import nowdate
 from datetime import datetime, timedelta
 from frappe import _
+from frappe.model.meta import get_meta
 
 
 @frappe.whitelist()
@@ -48,27 +49,22 @@ def get_books_list(page=1, page_length=20, filters=None, search_text=None):
 
 # AddBook form button
 @frappe.whitelist()
-def add_book(**kwargs):
-    # Optional: required field check
-    required_fields = [
-        "title",
-        "author",
-        "category",
-        "location",
-        "total_copies",
-        "status",
-    ]
-    for field in required_fields:
-        if not kwargs.get(field):
-            frappe.throw(_(f"{field.capitalize()} is required"))
+def get_book_fields():
+    meta = frappe.get_meta("Book")
+    fields = []
+    for field in meta.fields:
+        if field.fieldtype not in [
+            "Section Break",
+            "Column Break",
+        ]:
+            fields.append(
+                {
+                    "fieldname": field.fieldname,
+                    "label": field.label,
+                    "fieldtype": field.fieldtype,
+                    "options": field.options,
+                    "reqd": field.reqd,
+                }
+            )
+            return fields
 
-    try:
-        book = frappe.get_doc({"doctype": "Book", **kwargs})
-        book.insert()
-        frappe.db.commit()
-
-        return {"message": "Book added successfully", "name": book.name}
-
-    except Exception as e:
-        frappe.log_error(str(e), "Add Book Error")
-        raise
