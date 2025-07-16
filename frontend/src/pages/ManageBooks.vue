@@ -95,41 +95,52 @@
                 </table>
             </div>
             <!-- Add Book Modal -->
-            <button @click="showAddModal = true">Add Book</button>
+            <div v-if="showAddModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+                    <h2 class="text-xl font-bold mb-4">Add New Book</h2>
 
-            <div v-if="showAddModal" class="modal">
-                <form @submit.prevent="submitBook">
-                    <div v-for="field in bookFields" :key="field.fieldname" class="mb-3">
-                        <label class="block mb-1">{{ field.label }} <span v-if="field.reqd">*</span></label>
+                    <form @submit.prevent="submitBook">
+                        <div class="mb-3">
+                            <label class="block mb-1 font-medium">Title</label>
+                            <input v-model="newBook.title" type="text" class="w-full border rounded px-3 py-2"
+                                required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="block mb-1 font-medium">Author</label>
+                            <input v-model="newBook.author" type="text" class="w-full border rounded px-3 py-2"
+                                required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="block mb-1 font-medium">Category</label>
+                            <input v-model="newBook.category" type="text" class="w-full border rounded px-3 py-2" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="block mb-1 font-medium">Location</label>
+                            <input v-model="newBook.location" type="text" class="w-full border rounded px-3 py-2" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="block mb-1 font-medium">Total Copies</label>
+                            <input v-model="newBook.total_copies" type="number" class="w-full border rounded px-3 py-2"
+                                required />
+                        </div>
+                        <div class="mb-4">
+                            <label class="block mb-1 font-medium">Status</label>
+                            <select v-model="newBook.status" class="w-full border rounded px-3 py-2">
+                                <option value="Available">Available</option>
+                                <option value="Lended">Lended</option>
+                                <option value="Damaged">Damaged</option>
+                            </select>
+                        </div>
 
-                        <!-- Text Inputs -->
-                        <input v-if="field.fieldtype === 'Data'" v-model="newBook[field.fieldname]" type="text"
-                            class="input" :required="field.reqd" />
-
-                        <!-- Select Inputs -->
-                        <select v-else-if="field.fieldtype === 'Select'" v-model="newBook[field.fieldname]"
-                            class="input" :required="field.reqd">
-                            <option v-for="opt in field.options?.split('\n')" :key="opt" :value="opt">{{ opt }}</option>
-                        </select>
-
-                        <!-- Number -->
-                        <input v-else-if="field.fieldtype === 'Int'" v-model="newBook[field.fieldname]" type="number"
-                            class="input" :required="field.reqd" />
-
-                        <!-- Date -->
-                        <input v-else-if="field.fieldtype === 'Date'" v-model="newBook[field.fieldname]" type="date"
-                            class="input" :required="field.reqd" />
-
-                        <!-- Add more fieldtypes as needed -->
-                    </div>
-
-                    <div class="flex justify-end gap-3">
-                        <button type="button" @click="showAddModal = false">Cancel</button>
-                        <button type="submit">Add Book</button>
-                    </div>
-                </form>
+                        <div class="flex justify-end gap-3">
+                            <button type="button" @click="showAddModal = false"
+                                class="text-gray-600 px-4 py-2">Cancel</button>
+                            <button type="submit"
+                                class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Save</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-
 
         </div>
 
@@ -169,33 +180,8 @@ const filteredBooks = computed(() => {
     })
 })
 // Add new book modal
-const bookFields = ref([])
-
-onMounted(async () => {
-    const res = await call('/api/method/library_management.api.managebooks.get_book_fields')
-    bookFields.value = res.message
-})
 
 
-const newBook = ref({})
-
-const submitBook = async () => {
-    try {
-        await call('frappe.client.insert', {
-            doc: {
-                doctype: 'Book',
-                ...newBook.value
-            }
-        })
-        alert("Book added successfully!")
-        showAddModal.value = false
-        resource.fetch()  // refresh book list
-        newBook.value = {}
-    } catch (err) {
-        alert("Error adding book")
-        console.error(err)
-    }
-}
 
 const dropdownOpen = ref(false)
 const toggleDropdown = () => {
