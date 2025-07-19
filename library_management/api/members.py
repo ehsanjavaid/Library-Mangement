@@ -17,8 +17,7 @@ def get_members(page=1, page_length=20, filters=None, search_text=None):
         "Member",
         fields=[
             "membership_id",
-            "first_name",
-            "last_name",
+            "full_name",
             "phone",
             "email",
             "membership_type",
