@@ -98,6 +98,7 @@
 import { ref, computed } from 'vue'
 import { createResource } from 'frappe-ui'
 import { Search, Plus, ChevronDown } from 'lucide-vue-next'
+import { call } from 'frappe-ui'
 const searchText = ref('')
 
 const resource = createResource({
@@ -139,13 +140,30 @@ const editMembes = () => {
     alert(`Editing ${selectedMembers.value.length} Member(s)`)
 }
 
-const deleteMembers = () => {
-    if (selectedMembers.value.length === 0) return
-    const confirmDelete = confirm(`Are you sure you want to delete ${selectedMembers.value.length} member(s)?`)
-    if (confirmDelete) {
-        alert(`Deleted books (implement backend call here)`)
+const deleteMembers = async (memberName) => {
+  if (confirm("Are you sure you want to delete the selected members?")) {
+    try {
+      const response = await fetch(`/api/resource/Member/${memberName}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Frappe-CSRF-Token': frappe.csrf_token, // Include token
+        },
+        credentials: 'include', // Include cookies/session
+      });
+
+      if (!response.ok) {
+        throw new Error('Delete failed');
+      }
+
+      resource.reload();
+      alert('Members deleted successfully');
+    } catch (error) {
+      console.error('Error deleting members:', error);
+      alert('Failed to delete members. Please try again later.');
     }
-}
+  }
+};
 
 
 const isAllSelected = computed(() =>
@@ -155,9 +173,9 @@ const isAllSelected = computed(() =>
 
 const toggleSelectAll = () => {
     if (isAllSelected.value) {
-        selectedBooks.value = []
+        selectedMembers.value = []
     } else {
-        selectedBooks.value = [...filteredBooks.value]
+        selectedMembers.value = [...filteredMembers.value]
     }
 }
 </script>
