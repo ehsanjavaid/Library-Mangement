@@ -95,7 +95,6 @@ const resource = createResource({
   auto: true,
   transform: (response) => response.message
 })
-
 echarts.use([
   PieChart,
   TitleComponent,
