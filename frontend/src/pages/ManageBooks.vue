@@ -48,7 +48,6 @@
                     </div>
                 </div>
             </div>
-
             <div v-if="resource.loading" class="text-center py-4">Loading books...</div>
             <div v-else-if="resource.error" class="text-center text-red-500 py-4">
                 Error loading books: {{ resource.error.message || 'Unknown error' }}

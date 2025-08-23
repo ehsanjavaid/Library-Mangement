@@ -97,8 +97,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { createResource } from 'frappe-ui'
-import { Search, Plus, ChevronDown } from 'lucide-vue-next'
-import { call } from 'frappe-ui'
+import { Plus, ChevronDown } from 'lucide-vue-next'
 const searchText = ref('')
 
 const resource = createResource({

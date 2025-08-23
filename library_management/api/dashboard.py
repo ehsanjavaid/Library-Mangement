@@ -2,8 +2,7 @@ import frappe
 from frappe.utils import nowdate
 from datetime import datetime, timedelta
 
-
-@frappe.whitelist(allow_guest=True)
+# @frappe.whitelist(allow_guest=True)
 def get_dashboard_data():
     total_books = frappe.db.count("Book")
     issued_books_item = frappe.db.count(
